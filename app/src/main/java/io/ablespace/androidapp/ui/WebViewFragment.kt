@@ -30,7 +30,7 @@ class WebViewFragment: Fragment(R.layout.fragment_webview) {
 
         //viewBinding.webView.webViewClient
         //viewBinding.webView.webChromeClient
-        viewBinding.webView.loadUrl(Constants.URL_ABLESPACE)
+        viewBinding.webView.loadUrl(Constants.contentHome)
 
         activity
             ?.onBackPressedDispatcher
