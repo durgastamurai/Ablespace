@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         //load main fragment
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container_view, WebViewFragment(), WebViewFragment.TAG)
+                .replace(R.id.container_view, WebViewFragment.newInstance(), WebViewFragment.TAG)
                 .commit()
         }
     }

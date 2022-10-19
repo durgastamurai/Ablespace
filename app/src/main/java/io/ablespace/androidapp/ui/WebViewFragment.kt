@@ -23,14 +23,15 @@ class WebViewFragment: Fragment(R.layout.fragment_webview) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewBinding.webView.settings.apply {
             javaScriptEnabled = true
-            loadWithOverviewMode = true
+            // loadWithOverviewMode = true
             cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
             domStorageEnabled = true
+            userAgentString += " mobileapp"
         }
 
         //viewBinding.webView.webViewClient
         //viewBinding.webView.webChromeClient
-        viewBinding.webView.loadUrl(Constants.contentHome)
+        viewBinding.webView.loadUrl(Constants.URL_HOME)
 
         activity
             ?.onBackPressedDispatcher
