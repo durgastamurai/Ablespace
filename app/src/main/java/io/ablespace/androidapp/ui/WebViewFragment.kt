@@ -23,8 +23,9 @@ class WebViewFragment: Fragment(R.layout.fragment_webview) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewBinding.webView.settings.apply {
             javaScriptEnabled = true
-            // loadWithOverviewMode = true
-            cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
+//            loadWithOverviewMode = true
+//            cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
+//            cacheMode = WebSettings.LOAD_NO_CACHE
             domStorageEnabled = true
             userAgentString += " mobileapp"
         }
