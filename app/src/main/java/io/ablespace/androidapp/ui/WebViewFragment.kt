@@ -9,6 +9,7 @@ import android.view.View
 import android.webkit.WebChromeClient
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import io.ablespace.androidapp.BuildConfig
 import io.ablespace.androidapp.R
 import io.ablespace.androidapp.app.Constants
 import io.ablespace.androidapp.databinding.FragmentWebviewBinding
@@ -31,7 +32,7 @@ class WebViewFragment: Fragment(R.layout.fragment_webview), FileHandler {
         //viewBinding.webView.webViewClient
         chromeClient = MyChromeClient(this)
         viewBinding.webView.webChromeClient = chromeClient
-        viewBinding.webView.loadUrl(Constants.URL_HOME)
+        viewBinding.webView.loadUrl(BuildConfig.URL_BASE + Constants.ROUTE_DASHBOARD)
         addBackPressListener()
     }
 
