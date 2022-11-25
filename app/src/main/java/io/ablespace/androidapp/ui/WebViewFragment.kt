@@ -7,6 +7,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.webkit.WebChromeClient
+import android.webkit.WebResourceRequest
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import io.ablespace.androidapp.BuildConfig
@@ -29,11 +32,27 @@ class WebViewFragment: Fragment(R.layout.fragment_webview), FileHandler {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         configureWebViewSettings()
-        //viewBinding.webView.webViewClient
         chromeClient = MyChromeClient(this)
         viewBinding.webView.webChromeClient = chromeClient
+        setWebViewClient()
         viewBinding.webView.loadUrl(BuildConfig.URL_BASE + Constants.ROUTE_DASHBOARD)
         addBackPressListener()
+    }
+
+    // Need to set webViewClient to avoid redirecting to browser in staging build
+    private fun setWebViewClient(){
+        viewBinding.webView.webViewClient = object: WebViewClient () {
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                return false
+            }
+
+            override fun shouldOverrideUrlLoading(
+                view: WebView?,
+                request: WebResourceRequest?
+            ): Boolean {
+                return false
+            }
+        }
     }
 
     override fun onShowFileChooser(intent: Intent?) {
