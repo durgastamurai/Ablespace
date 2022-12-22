@@ -4,10 +4,7 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
-import android.webkit.PermissionRequest
-import android.webkit.ValueCallback
-import android.webkit.WebChromeClient
-import android.webkit.WebView
+import android.webkit.*
 
 interface FileHandler {
     fun onShowFileChooser(intent: Intent?)
@@ -48,4 +45,8 @@ class MyChromeClient(private val fileHandler: FileHandler): WebChromeClient() {
         request?.grant(request.resources)
     }
 
+    override fun onConsoleMessage(consoleMessage: ConsoleMessage?): Boolean {
+        Log.d("durga", "console: ${consoleMessage?.message()}")
+        return true
+    }
 }
